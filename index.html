@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>College Search</title>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="main.css" />
+    </head>
+    <body>
+        <div id="Loading">
+            <p>Loading colleges...</p>
+            <div class="loader"></div> 
+        </div>
+        
+        <script>
+            $(document).ready(function () {
+                $.getJSON("CollegeSearch.json", function (colleges) {
+                    $('#Loading').hide();
+
+                })
+            })    
+        </script>
+    </body>
+</html>
