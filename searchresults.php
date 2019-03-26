@@ -3,9 +3,10 @@
         <meta charset="utf-8" />
         <title>College Search</title>
         <link rel="stylesheet" type="text/css" href="main.css" />
-        <script src="./jquery-3.3.1.js"></script>
+        <script src="./scripts/jquery-3.3.1.js"></script>
         <link rel="stylesheet" type="text/css" href="main.css" />
-
+        <script src="./scripts/chart.js/dist/Chart.js"></script>
+        
     </head>
 <body>
     <?php $institutionname = $_GET["INSTNM"]; ?>
