@@ -5,7 +5,14 @@
         <link rel="stylesheet" type="text/css" href="main.css" />
     </head>
 <body>
-    You searched for <?php echo $_GET["instnm"]; ?><br>
-    In city <?php echo $_GET["city"]; ?>
+    You searched for <?php echo $_GET["INSTNM"]; ?><br>
+    <script>
+            $(document).ready(function () {
+                var searchedCollege = <?php echo $_GET["INSTNM"]; ?>
+                $.getJSON("CollegeSearch.json", function (colleges) {
+                    
+                })
+            })    
+    </script>
 <body>
 </html>

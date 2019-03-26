@@ -15,20 +15,16 @@
         <div id="Done">
             <form action="searchresults.php" method="get">
                 Institution Name:<br>
-                <input type="text" name="instnm"><br>
-                City:<br>
-                <input type="text" name="city"><br>
+                <input type="text" name="INSTNM"><br>
+                <!-- City:<br>
+                    <input type="text" name="CITY"><br>--> 
                 <input type="submit" value="Submit">
             </form>
         </div>
         <script>
             $(document).ready(function () {
-                $('#Done').hide();
-                $('#status').text("Loading colleges...")
-                $.getJSON("CollegeSearch.json", function (colleges) {
-                    $('#Loading').hide();
-                    $('#Done').show();
-                })
+                $('#loading').hide();
+                
             })    
         </script>
     </body>
