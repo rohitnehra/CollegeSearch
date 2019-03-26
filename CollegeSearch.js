@@ -13,45 +13,48 @@ fs.readFile("./MERGED2016_17_PPFIXED.csv", 'utf8', function (err, data) {
         for (let i = 1; i < colleges.length; i++) {
             const college = colleges[i].split(","); //college
             const institutionName = college[3]
-            allColleges[institutionName] = {}
-            for (let x = 4; x < key.length; x++) {
-                if (college[x] == 'NULL' || college[x] == 'PrivacySuppressed' || !college[x]) college[x] = null;
-                else {
-                    if (college[x].includes("*")) {
-                        college[x] = college[x].replace(/\*/g, ",");
+            if (institutionName) {
+                allColleges[institutionName] = {}
+                for (let x = 4; x < key.length; x++) {
+                    if (college[x] == 'NULL' || college[x] == 'PrivacySuppressed' || !college[x]) college[x] = null;
+                    else {
+                        if (college[x].includes("*")) {
+                            college[x] = college[x].replace(/\*/g, ",");
+                        }
                     }
-                }
-                if (key[x].includes("ASSOC") || key[x].includes("BACHL")) {
-                    if (college[x] == "1") {
-                        allColleges[institutionName][key[x]] = true
-                    } else {
-                        allColleges[institutionName][key[x]] = false
-                    } 
-                } else if (numberKeys.includes(key[x])) {
-                    if (college[x] == null) {
-                        
-                    }  else if (college[x].includes("-") || college[x].includes("/") || key[x] == "ZIP") { 
+                    if (key[x].includes("ASSOC") || key[x].includes("BACHL")) {
+                        if (college[x] == "1") {
+                            allColleges[institutionName][key[x]] = true
+                        } else {
+                            allColleges[institutionName][key[x]] = false
+                        } 
+                    } else if (numberKeys.includes(key[x])) {
+                        if (college[x] == null) {
+                            
+                        }  else if (college[x].includes("-") || college[x].includes("/") || key[x] == "ZIP") { 
+                            allColleges[institutionName][key[x]] = college[x]
+                        } else if (college[x].includes(".")) {
+                            //parseFloat
+                            allColleges[institutionName][key[x]] = parseFloat(college[x])
+                            
+                        } else {
+                            //parseInt
+                            allColleges[institutionName][key[x]] = parseInt(college[x])
+                            
+                        }
+                    } else if (boolKeys.includes(key[x])) {
+                        if (college[x] == "1" || college[x] == "2") {
+                            //true
+                            allColleges[institutionName][key[x]] = true;
+                        } else {
+                            allColleges[institutionName][key[x]] = false;
+                        }
+                    } else if (stringKeys.includes(key[x])) {
                         allColleges[institutionName][key[x]] = college[x]
-                    } else if (college[x].includes(".")) {
-                        //parseFloat
-                        allColleges[institutionName][key[x]] = parseFloat(college[x])
-                        
-                    } else {
-                        //parseInt
-                        allColleges[institutionName][key[x]] = parseInt(college[x])
-                        
                     }
-                } else if (boolKeys.includes(key[x])) {
-                    if (college[x] == "1" || college[x] == "2") {
-                        //true
-                        allColleges[institutionName][key[x]] = true;
-                    } else {
-                        allColleges[institutionName][key[x]] = false;
-                    }
-                } else if (stringKeys.includes(key[x])) {
-                    allColleges[institutionName][key[x]] = college[x]
                 }
             }
+            
         }
 
         fs.writeFile("CollegeSearch.json", JSON.stringify(allColleges), err => {

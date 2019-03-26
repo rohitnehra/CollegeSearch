@@ -3,16 +3,36 @@
         <meta charset="utf-8" />
         <title>College Search</title>
         <link rel="stylesheet" type="text/css" href="main.css" />
+        <script src="./jquery-3.3.1.js"></script>
+        <link rel="stylesheet" type="text/css" href="main.css" />
+
     </head>
 <body>
-    You searched for <?php echo $_GET["INSTNM"]; ?><br>
+    <?php $institutionname = $_GET["INSTNM"]; ?>
+    You searched for <?php echo $institutionname; ?><br>
+    <div id="Loading">
+        <p id="status"></p>
+        <div class="loader"></div> 
+    </div>
+    <div id="Results">
+
+    </div>
     <script>
-            $(document).ready(function () {
-                var searchedCollege = <?php echo $_GET["INSTNM"]; ?>
-                $.getJSON("CollegeSearch.json", function (colleges) {
-                    
-                })
-            })    
+        var searchedCollege = "<?php echo $institutionname; ?>";
+        $(document).ready(function () {
+            $("#Results").hide();
+            $.getJSON("CollegeFind.json", function (colleges) {    
+                $("#Loading").hide();        
+                colleges.forEach(college => {
+                    if (college.INSTNM.includes(searchedCollege)) {
+                        console.log(college)
+                        const storeCollege = document.createElement("div")
+                        storeCollege
+                    }
+                });
+                $("#Results").show();
+            })
+        })    
     </script>
 <body>
 </html>
