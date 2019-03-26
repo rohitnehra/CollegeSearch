@@ -25,6 +25,7 @@
                 $("#Loading").hide();        
                 colleges.forEach(college => {
                     if (college.INSTNM.includes(searchedCollege)) {
+                        console.log(college)
                         const storeCollege = document.createElement("div")
                         AddTextElement(`Institution Name: ${college.INSTNM}`, storeCollege)
                         if (college.HCM2) {
@@ -86,6 +87,56 @@
                                     AddTextElement("This college offers up to a graduate degree", storeCollege)
                                     break;
                                 default:
+                                    break;
+                            }
+                        }
+                        if (college.CONTROL == 2) {
+                            AddTextElement("This is a 4 year college",storeCollege)
+                        } else if (college.CONTROL == 1) {
+                            AddTextElement("This is a 2 year college", storeCollege)
+                        } else if (college.CONTROL == 0) {
+                            AddTextElement("This is a degree granting institution", storeCollege)
+                        }
+
+                        //Figure out what region numbers relate too
+
+                        if (college.LOCALE) {
+                            switch (college.LOCALE) {
+                                case 11:
+                                    AddTextElement("This college is located in a large city", storeCollege)
+                                    break;
+                                case 12:
+                                    AddTextElement("This college is located in a midsized city", storeCollege)
+                                    break;
+                                case 13:
+                                    AddTextElement("This college is located in a small city", storeCollege)
+                                    break;
+                                case 21:
+                                    AddTextElement("This college is located in a large suburb", storeCollege)
+                                    break;
+                                case 22:
+                                    AddTextElement("This college is located in a midsized suburb", storeCollege)
+                                    break;
+                                case 23:
+                                    AddTextElement("This college is located in a small suburb", storeCollege)
+                                    break;
+                                case 31:
+                                    AddTextElement("This college is located in a frige town", storeCollege)
+                                    break;
+                                case 32:
+                                    AddTextElement("This college is located in a distant town", storeCollege)
+                                    break;
+                                case 33:
+                                    AddTextElement("This college is located in a remote town", storeCollege)
+                                    break;
+                                case 41:
+                                    AddTextElement("This college is located in a frige rural area", storeCollege)
+                                    break;
+                                case 42:
+                                    AddTextElement("This college is located in a distant rural area", storeCollege)
+                                    break;
+                                case 43: 
+                                    AddTextElement("This college is located in a remote rural area", storeCollege)
                                     break;
                             }
                         }
