@@ -3,20 +3,31 @@
     <head>
         <meta charset="utf-8" />
         <title>College Search</title>
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="./jquery-3.3.1.js"></script>
         <link rel="stylesheet" type="text/css" href="main.css" />
     </head>
     <body>
+        <h1>Search for a college</h1>
         <div id="Loading">
-            <p>Loading colleges...</p>
+            <p id="status"></p>
             <div class="loader"></div> 
         </div>
-        
+        <div id="Done">
+            <form action="searchresults.php" method="get">
+                Institution Name:<br>
+                <input type="text" name="instnm"><br>
+                City:<br>
+                <input type="text" name="city"><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
         <script>
             $(document).ready(function () {
+                $('#Done').hide();
+                $('#status').text("Loading colleges...")
                 $.getJSON("CollegeSearch.json", function (colleges) {
                     $('#Loading').hide();
-
+                    $('#Done').show();
                 })
             })    
         </script>
