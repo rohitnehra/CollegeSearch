@@ -5,25 +5,13 @@
         <title>College Search</title>
         <script src="./scripts/jquery-3.3.1.js"></script>
         <link rel="stylesheet" type="text/css" href="main.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
         <h1>Search for a college</h1>
-        <div id="Loading">
-            <p id="status"></p>
-            <div class="loader"></div> 
-        </div>
-        <div id="Done">
-            <form action="searchresults.php" method="get">
-                Institution Name:<br>
-                <input type="text" name="INSTNM"><br>
-                <input type="submit" value="Submit">
+            <form class="search" action="searchresults.php" method="get">
+                <input type="text" placeholder="Institution name..." name="INSTNM"><br>
+               <!-- <button type="submit"><i class="fa fa-search"></i></button>-->
             </form>
-        </div>
-        <script>
-            $(document).ready(function () {
-                $('#Loading').hide();
-                
-            })    
-        </script>
     </body>
 </html>
