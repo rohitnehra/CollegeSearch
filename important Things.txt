@@ -65,14 +65,11 @@ SATMT75: 75th percentile of SAT scores at the institution (math)
 SATVRMID: Midpoint of SAT scores at the institution (critical reading)
 SATMTMID: Midpoint of SAT scores at the institution (math)
 
-ACTCM25: 25th percentile of the ACT cumulative score
-ACTCM75: 75th percentile of the ACT cumulative score
 ACTEN25: 25th percentile of the ACT English score
 ACTEN75: 75th percentile of the ACT English score
 ACTMT25: 25th percentile of the ACT math score
 ACTMT75: 75th percentile of the ACT math score
 
-ACTCMMID: Midpoint of the ACT cumulative score
 ACTENMID: Midpoint of the ACT English score
 ACTMTMID: Midpoint of the ACT math score
 
