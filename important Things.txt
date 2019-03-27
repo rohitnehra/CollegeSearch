@@ -29,6 +29,8 @@ HIGHDEG:       Highest degree awarded
 
 CONTROL: Control of institution
 
+ST_FIPS: FIPS code for state
+
 REGION: Region (IPEDS)
 LOCALE: Locale of institution
 
